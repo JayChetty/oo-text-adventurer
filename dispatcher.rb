@@ -12,14 +12,6 @@ class Dispatcher
     end
   end
 
-  def quit
-    abort("Your adventure is over")
-  end
-
-  def clear
-    system "clear"
-  end
-
   def show_selected_rune
     puts "Selected rune:  #{@game.adventurer.current_rune }"
   end

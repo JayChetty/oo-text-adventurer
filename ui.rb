@@ -43,7 +43,16 @@ class Ui
     puts "Please choose an option" if !chosen
     selection = Ui::Menu[chosen.downcase]
     puts "Invalid Option" if !selection
-    @dispatcher.send( selection[:method] )
+    receiver = chosen.to_i == 0 ? self : @dispatcher
+    receiver.send( selection[:method] )
+  end
+
+  def quit
+    abort("Your adventure is over")
+  end
+
+  def clear
+    system "clear"
   end
 
 end
