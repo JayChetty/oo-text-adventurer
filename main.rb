@@ -10,7 +10,7 @@ adventurer = Adventurer.new
 adventurer.add_rune( StickRune )
 adventurer.set_current_rune(0)
 
-game = Game.new(adventurer: adventurer, runes:[MagicHatRune], target: Target.new(20))
+game = Game.new(adventurer: adventurer, runes:[MagicHatRune], target: Target.new(20, "Door"))
 
 ui = Ui.new(Dispatcher.new(game))
 ui.start

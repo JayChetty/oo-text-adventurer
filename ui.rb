@@ -1,7 +1,3 @@
-require_relative('models/game')
-require_relative('models/adventurer')
-require_relative('models/stick_rune')
-
 class Ui
   Menu = {
     "1" => {text: "Show Runes", method: "show_runes"},
@@ -14,12 +10,20 @@ class Ui
     @dispatcher = dispatcher
   end
 
+  def separator
+    puts "----------------"
+  end
+
   def start
+    puts "+++++++++++++++"
+    puts "Welcome adventurer!"
     while(@dispatcher.game_in_play?)
-      puts "Welcome adventurer!"
+      separator
       @dispatcher.show_target
+      separator
       display_menu
       puts "Choose option"
+      separator
       chosen_option = gets.chomp
       select_option( chosen_option )
     end
@@ -37,7 +41,6 @@ class Ui
     if !selection
       puts "Invalid Option"
     end
-    puts "You chose #{selection[:text]}"
     @dispatcher.send( selection[:method] )
   end
 

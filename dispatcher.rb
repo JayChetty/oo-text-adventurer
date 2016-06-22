@@ -35,7 +35,7 @@ class Dispatcher
   end
 
   def show_target
-    puts "Target, current health #{@game.current_target.health}"
+    puts "Target: #{@game.current_target.name} - current health #{@game.current_target.health}"
   end
 
 end
