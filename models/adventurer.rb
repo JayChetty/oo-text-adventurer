@@ -15,7 +15,6 @@ class Adventurer
   end
 
   def summon_from_rune
-    new_summon = @current_rune.send(:new)
     @current_summon = @current_rune.send(:new)
   end
 end

@@ -7,15 +7,15 @@ class TargetSpec < Minitest::Test
   end
 
   def test_health
-    assertEqual(10, @target.health)
+    assert_equal(10, @target.health)
   end
 
   def test_take_hit
     @target.take_hit(1)
-    assertEqual(9, @target.health)
+    assert_equal(9, @target.health)
   end
 
   def test_has_name
-    assertEqual("Door", @target.name)
+    assert_equal("Door", @target.name)
   end
 end
