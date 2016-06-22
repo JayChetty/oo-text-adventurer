@@ -4,7 +4,8 @@ class Ui
     "2" => {text: "Show Target", method: "show_target"},
     "3" => {text: "Summon Selected Rune", method: "summon"},
     "4" => {text: "Use Summon Power", method: "power"},
-    "Q" => {text: "Quit"}
+    "q" => {text: "Quit", method: "quit"},
+    "c" => {text: "Clear screen", method: "clear"}
   }
 
   def initialize(dispatcher)
@@ -39,11 +40,9 @@ class Ui
   end
 
   def select_option(chosen)
-    abort("Your adventure is over") if chosen.downcase == "q"
-    selection = Ui::Menu[chosen]
-    if !selection
-      puts "Invalid Option"
-    end
+    puts "Please choose an option" if !chosen
+    selection = Ui::Menu[chosen.downcase]
+    puts "Invalid Option" if !selection
     @dispatcher.send( selection[:method] )
   end
 
