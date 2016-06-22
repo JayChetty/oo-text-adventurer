@@ -12,6 +12,11 @@ class Dispatcher
     end
   end
 
+
+  def show_selected_rune
+    puts "Selected rune:  #{@game.adventurer.current_rune }"
+  end
+
   def game_in_play?
     return !@game.is_over
   end
@@ -24,6 +29,7 @@ class Dispatcher
     show_powers
     puts "enter the power you want to use"
     power = gets.chomp()
+    puts "you chose to use #{power}"
     @game.adventurer.current_summon.send(power, @game.current_target)
     puts "Target defeated!" if(@game.current_target.health <= 0)
   end

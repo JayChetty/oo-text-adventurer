@@ -3,7 +3,8 @@ class Ui
     "1" => {text: "Show Runes", method: "show_runes"},
     "2" => {text: "Show Target", method: "show_target"},
     "3" => {text: "Summon Selected Rune", method: "summon"},
-    "4" => {text: "Use Summon Power", method: "power"}
+    "4" => {text: "Use Summon Power", method: "power"},
+    "Q" => {text: "Quit"}
   }
 
   def initialize(dispatcher)
@@ -19,6 +20,7 @@ class Ui
     puts "Welcome adventurer!"
     while(@dispatcher.game_in_play?)
       separator
+      @dispatcher.show_selected_rune
       @dispatcher.show_target
       separator
       display_menu
@@ -37,6 +39,7 @@ class Ui
   end
 
   def select_option(chosen)
+    abort("Your adventure is over") if chosen.downcase == "q"
     selection = Ui::Menu[chosen]
     if !selection
       puts "Invalid Option"
